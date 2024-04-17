@@ -1,22 +1,15 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const app = express();
 const cors = require("cors");
-require("dotenv").config({ path: "./config/.env" });
-const port = process.env.PORT || 5001;
+require("dotenv").config({ path: "./config/.enviro" });
+const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
-
 // get driver connection
-//const dbo = require("./config/db/conn");
 
-mongoose.connect(process.env.ATLAS_URI)
-    .then(() => {
-        // listen for requests
-        app.listen(port, () => {
-            console.log(`Connected to the database and server is running on port: ${port}`);
-        });
-    })
-    .catch((error) => {
-        console.log(error)
-    })
+app.listen(port, () => {
+  console.log(`Server is running on port: ${port}`);
+});
+
+require("./routes/auth.js")(app);
+require('./routes/google-oauth.js')(app);

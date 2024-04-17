@@ -1,0 +1,3 @@
+ATLAS_URI=mongodb+srv://amwright:supersecret__@cs390-lab1-awright.ktjauuf.mongodb.net/cat?retryWrites=true&w=majority
+GOOGLE_SECRET_KEY=
+GOOGLE_CLIENT_ID=
