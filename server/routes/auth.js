@@ -9,12 +9,4 @@ module.exports = (app) => {
     app.post("/auth/login", async (request, response) => {
         await login(request, response);
     });
-    app.get("/auth/signup",  async (request, response) => {
-        const users = User.find({});
-        let arr = new Array();
-        for await (let i of users) {
-            arr.push(i);
-        }
-        response.send(arr);
-    });
 };
