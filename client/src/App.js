@@ -26,8 +26,9 @@ import Support from "./pages/support";
 import MyAccount from "./pages/dummyPages/myAccount";
 import MyFavorites from "./pages/dummyPages/myFavorites";
 import MyCart from "./pages/dummyPages/myCart";
-import Login from "./pages/login";
 import SampleProduct from "./pages/dummyPages/sampleProduct";
+import { CreateAccountForm, CreateBuyerForm, CreateSellerForm, LoginForm, LoginScreenBase, Template } from './Login';
+import './index.css'; 
 
 function App() {
 
@@ -43,9 +44,6 @@ function App() {
                 <Route
                     exact path="/" //Path for it to be added too
                     element={<DefaultPageFramework component={<Buyer />} />} />
-                <Route
-                    path="/login" //Path for it to be added too
-                    element={<DefaultPageFramework component={<Login />} />} />
                 <Route
                     path="/houses" //Path for it to be added too
                     element={<BuyerPageFramework component={<Houses />} />} />
@@ -88,13 +86,17 @@ function App() {
                 <Route
                     path="/dummyPages/sampleProduct" //Path for it to be added too
                     element={<DefaultPageFramework component={<SampleProduct />} />} />
+                <Route exact path="/login" element={<Template children={<LoginScreenBase children={<LoginForm/>}/>}/>}/>        
+                <Route exact path="/SignUp" element={<Template children={<LoginScreenBase children={<CreateAccountForm/>}/>}/>}/>
+                <Route exact path="/SignUp/SellerSignUp" element={<Template children={<LoginScreenBase children={<CreateSellerForm/>} />}/>}/>
+                <Route exact path="/SignUp/BuyerSignUp" element={<Template children={<LoginScreenBase children={<CreateBuyerForm/>}/>}/>}/> 
+
             </Routes>
         </Router>
     );
 }
 
 export default App;
-
 
 /*
                 <Route
