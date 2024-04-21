@@ -19,11 +19,12 @@ export const Nav = styled.nav`
 
 export const smallNav = styled.nav`
     background: #ffc700;
-    height: 85px;
     display: flex;
-    justify-content: space-between;
+    align-items: center;
     padding: 0.2rem calc((100vw - 1000px) / 2);
     z-index: 12;
+    height: 20px;
+    justify-content: space-between;    
 `;
 
 export const NavLink = styled(Link)`
