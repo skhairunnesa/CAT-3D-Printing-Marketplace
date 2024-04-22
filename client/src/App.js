@@ -90,10 +90,10 @@ function App() {
                     element={<DefaultPageFramework component={<SampleProduct />} />} />
                <Route
                     path="/product/:productId"
-                    element={<BuyerPageFramework component={<Product />} />} />
+                    element={<DefaultPageFramework component={<Product />} />} />
                <Route
                     path="/product/"
-                    element={<BuyerPageFramework component={<Product />} />} />
+                    element={<DefaultPageFramework component={<Product />} />} />
                <Route 
                     exact path="/catalog"
                     element={<BuyerPageFramework component={<Catalog/>} />} />

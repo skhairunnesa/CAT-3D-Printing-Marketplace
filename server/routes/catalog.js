@@ -34,7 +34,7 @@ module.exports = router
 const express = require('express')
 const router = express.Router()
 const House = require('../models/house')
-const dbo = require("../db/conn")
+const Product = require('../models/product-model');
 //GEt all
 /*
 router.get("/", async (req, res) => {
@@ -50,6 +50,12 @@ router.get("/", async (req, res) => {
         res.status(500).json( { message: err.message } )
     }
 }) */
+
+async function getAllStructureInfo(){
+     var result = await Product.find();
+     return result;
+  }
+
 //Get all entries of the database
 router.post("/", async (req, res) => {
     //const wasd = await House.findOne({ structure_type: "house"}, { _id: 1 });
@@ -65,8 +71,7 @@ router.post("/", async (req, res) => {
         //const testArray = [wasd, wasd2]
         //res.status(201).json(wasd);
         //res.status(201).json(wasd);
-        const allTheThings = await dbo.getAllStructureInfo();
-       // console.log(allTheThings);
+        const allTheThings = await getAllStructureInfo();
         res.status(201).json(allTheThings);
     }catch(err) {
         res.status(400).json( { message: err.message } )
