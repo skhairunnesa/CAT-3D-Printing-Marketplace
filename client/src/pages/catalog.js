@@ -3,13 +3,10 @@ import { CatalogPage, Search, Tags, Results, Element, Link, Img, NumResults, Foo
 import SearchBar from './../components/SearchBar';
 
 const Catalog = () => {
-    //const initialMyArray = JSON.parse(localStorage.getItem("myArray")) || ['a', 'b', 'c', 'd', 'e'];
-    //const [myArray, setMyArray] = useState(initialMyArray);
     const [query, setQuery] = useState([]);
-    //const [counter, setCounter] = useState(parseInt(localStorage.getItem("counter")) || 0);
-    //const [arrayChanged, setArrayChanged] = useState(false);
     const [ numElements, setCount ] = useState(0);
     const [error, setError] = useState('');
+    const [results, setResults] = useState([]);
 
     useEffect(() => {
         fetch("http://localhost:5000/catalog/", {
@@ -34,99 +31,55 @@ const Catalog = () => {
     }, []);
 
     const handleSubmit = async (query) => {
-        console.log("Please implement me!");
-        // Hello backend people!
-    };
-
-    /*const handleClick = () => {
-        if (arrayChanged) {
-          setMyArray(initialMyArray);
-        } else {
-          setMyArray(['f', 'g', 'h', 'i', 'j']);
-        }
-        setCounter(prevCounter => prevCounter + 1);
-        setArrayChanged(!arrayChanged);
-
-        //Test additions 4/2/24
-        fetch("http://localhost:9090/catalog", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ test: 1 }),
-        })
+     try {
+          setResults([]);
+          fetch("http://localhost:5000/catalog/1", {
+              method: "POST",
+              headers: {
+              "Content-Type": "application/json",
+              },
+              body: JSON.stringify({query}),
+          })
           .then((response) => response.json())
           .then((data) => {
-            setQuery(data);
+              setResults(data);
+              console.log(data);
+              console.log("Q", query);
           });
-    };*/
-
-    /*const handleClear = () => {
-        localStorage.removeItem("myArray");
-        localStorage.removeItem("counter");
-        setMyArray(['a', 'b', 'c', 'd', 'e']); // Set array back to initial value
-        setCounter(0);
-        setArrayChanged(false);
+      } catch (error) {
+          console.error('Error fetching data:', error);
+          setError('An error occurred while fetching data.');
+      }
     };
 
-    useEffect(() => {
-        localStorage.setItem("myArray", JSON.stringify(myArray));
-    }, [myArray]);
 
-    useEffect(() => {
-        localStorage.setItem("counter", counter);
-    }, [counter]);*/
+const renderElements = () => {
+     let content = [];
+     let num = results.length;
+     let link = "http://localhost:3000/product/";
+     if (num === undefined) {
+         content.push(
+             <Element>
+                 <h1><Link href={link + results.structure_id}>{results.structure_id}</Link></h1>
+                 <Img src={results.images[0]} alt="Alternative Text" />
+                 <p><Link href="https://www.cat.com/en_US.html">House Construction Group</Link></p>
+             </Element>
+         );
+     } else {
+         for (let i = 0; i < num; i++) {
+             content.push(
+                 <Element>
+                     <h1><Link href={link + results[i].structure_id}>{results[i].structure_id}</Link></h1>
+                     <Img src={results[i].images[0]} alt="Alternative Text" />
+                     <p><Link href="https://www.cat.com/en_US.html">House Construction Group</Link></p>
+                 </Element>
+             );
+         }
+     }
 
-    const renderElements = () => {
-        //console.log("I'm doing stuff");
-        let content = [];
-        let num = query.length;
-        let link = "http://localhost:3000/product/";
-        for (let i = 0; i < num; i++) {
-            content.push(
-                <Element>
-                    <h1><Link href={link + query[i].structure_id}>{query[i].structure_id}</Link></h1>
-                    <Img src={query[i].images[0]} alt="Alternative Text" />
-                    <p><Link href="https://www.cat.com/en_US.html">House Construction Group</Link></p>
-                </Element>
-            );
-        }
-        return content;
-        /*return query.map((item) => (
-            <Element key={item._id}>
-                <h1><Link>{item._id}</Link></h1>
-                <img src={item.images[0]} alt="Alternative Text" />
-                <p><Link href="https://www.cat.com/en_US.html">House Construction Group</Link></p>
-            </Element>
-        ));*/
+     return content;
+     
     }
-
-    /*function ColorChangingButton() {
-        const initialColor = localStorage.getItem('buttonColor') || '#007bff';
-        const [buttonColor, setButtonColor] = useState(initialColor);
-
-        const getRandomColor = () => {
-            return '#' + Math.floor(Math.random()*16777215).toString(16);
-        };
-
-        const handleClick = () => {
-            const randomColor = getRandomColor();
-            setButtonColor(randomColor);
-        };
-
-        useEffect(() => {
-            localStorage.setItem('buttonColor', buttonColor);
-        }, [buttonColor]);
-
-        return (
-            <button
-                style={{ backgroundColor: buttonColor, color: '#ffffff' }}
-                onClick={handleClick}
-            >
-            {myArray.length > 0 ? JSON.stringify(myArray) : 'No Array'}
-            </button>
-        );
-    }*/
 
     return (
         <CatalogPage>
