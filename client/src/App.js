@@ -21,7 +21,7 @@ import Resources from "./pages/resources";
 import Discover from "./pages/discover";
 import Design from "./pages/design";
 import Construct from "./pages/construct";
-import Product from "./pages/product";
+import Product from "./pages/Product";
 import Catalog from "./pages/catalog";
 import Community from "./pages/community";
 import Support from "./pages/support";
