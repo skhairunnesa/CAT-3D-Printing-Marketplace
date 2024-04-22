@@ -19,6 +19,7 @@ const Catalog = () => {
         .then((response) => response.json())
         .then((data) => {
             setQuery(data);
+            setResults(data);
             setCount(data.length);
             console.log("IN fetch: ", query);
             setError('');
@@ -43,6 +44,7 @@ const Catalog = () => {
           .then((response) => response.json())
           .then((data) => {
               setResults(data);
+              setCount(data.length);
               console.log(data);
               console.log("Q", query);
           });
