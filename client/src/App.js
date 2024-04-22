@@ -86,6 +86,15 @@ function App() {
                 <Route
                     path="/dummyPages/sampleProduct" //Path for it to be added too
                     element={<DefaultPageFramework component={<SampleProduct />} />} />
+               <Route
+                    path="/product/:productId"
+                    element={<PageFramework component={<Product />} />} />
+               <Route
+                    path="/product/"
+                    element={<PageFramework component={<Product />} />} />
+               <Route 
+                      exact path="/catalog"
+                      element={<PageFramework component={<Catalog/>} />} />
                 <Route exact path="/login" element={<Template children={<LoginScreenBase children={<LoginForm/>}/>}/>}/>        
                 <Route exact path="/SignUp" element={<Template children={<LoginScreenBase children={<CreateAccountForm/>}/>}/>}/>
                 <Route exact path="/SignUp/SellerSignUp" element={<Template children={<LoginScreenBase children={<CreateSellerForm/>} />}/>}/>

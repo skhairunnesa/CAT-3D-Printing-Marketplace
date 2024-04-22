@@ -5,7 +5,7 @@
 
 import React from "react";
 import { Nav, NavLink, NavMenu, SmallNavMenu, SmallNavLink, SearchContainer, SearchInput, SearchButton } from "./NavbarElements";
-
+import caterpillarLogo from '../assets/caterpillar_logo.png'
 
 export const DefaultNavBar = () => {
     return (
@@ -17,7 +17,7 @@ export const DefaultNavBar = () => {
                 <NavLink to="/houses" activeStyle>
                     Houses
                 </NavLink>
-                <NavLink to="/structures" activeStyle>
+                <NavLink to="/catalog" activeStyle>
                     Structures
                 </NavLink>
                 <NavLink to="/brands" activeStyle>
