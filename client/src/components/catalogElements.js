@@ -55,16 +55,5 @@ export const Img = styled.img`
 
 export const NumResults = styled.div`
     padding: 10px;
-    margin-bottom: 85px;
     grid-area: f;
-`;
-
-export const Footer = styled.footer`
-    background-color: #ffc107;
-    padding: 1rem;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    left: 0; /* Align to the left side of the viewport */
-    width: 100%; /* Spread across the entire width of the viewport */
 `;

@@ -48,7 +48,7 @@ export const BuyerNavBar = () => {
                 <NavLink to="/houses" activeStyle>
                     Houses
                 </NavLink>
-                <NavLink to="/structures" activeStyle>
+                <NavLink to="/catalog" activeStyle>
                     Structures
                 </NavLink>
                 <NavLink to="/brands" activeStyle>

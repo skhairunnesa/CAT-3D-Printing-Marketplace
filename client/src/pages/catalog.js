@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { CatalogPage, Search, Tags, Results, Element, Link, Img, NumResults, Footer } from "./../components/catalogElements";
+import { CatalogPage, Search, Tags, Results, Element, Link, Img, NumResults } from "./../components/catalogElements";
 import SearchBar from './../components/SearchBar';
 
 const Catalog = () => {
@@ -99,9 +99,6 @@ const renderElements = () => {
             <NumResults>
                 <p>Results Displayed: {numElements}</p>
             </NumResults>
-            <Footer>
-                <p>CAT 3DCP Teams Peak Performers, Screen Warriors, and Kryptonite</p>
-            </Footer>
         </CatalogPage>
     );
 }
