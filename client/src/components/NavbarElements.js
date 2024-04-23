@@ -23,7 +23,7 @@ export const smallNav = styled.nav`
     align-items: center;
     padding: 0.2rem calc((100vw - 1000px) / 2);
     z-index: 12;
-    height: 20px;
+    height: 85px;
     justify-content: space-between;    
 `;
 
@@ -90,13 +90,13 @@ white-space: nowrap; */
 export const SmallNavMenu = styled.div`
     display: flex;
     align-items: center;
-    margin-left: 1500px;
     /* Third Nav */
     /* width: 100vw;
 white-space: nowrap; */
     @media screen and (max-width: 768px) {
         display: none;
     }
+    justify-content: space-between;
 `;
 
 export const SearchButton = styled.span`
