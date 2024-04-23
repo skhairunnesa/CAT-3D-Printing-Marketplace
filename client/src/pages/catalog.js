@@ -90,8 +90,9 @@ const renderElements = () => {
                 {error && <p className="error">{error}</p>}
             </Search>
             <Tags>
-                <h1><Link>Tag 1</Link></h1>
-                <h1><Link>Tag 2</Link></h1>
+                <h1><Link onClick={() => {handleSubmit("residential")}}>Residential</Link></h1>
+                <h1><Link onClick={() => {handleSubmit("business")}}>Business</Link></h1>
+                <h1><Link onClick={() => {handleSubmit("industrial")}}>Industrial</Link></h1>
             </Tags>
             <Results>
                 {renderElements()}
