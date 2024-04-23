@@ -21,6 +21,8 @@ import Resources from "./pages/resources";
 import Discover from "./pages/discover";
 import Design from "./pages/design";
 import Construct from "./pages/construct";
+import Product from "./pages/Product";
+import Catalog from "./pages/catalog";
 import Community from "./pages/community";
 import Support from "./pages/support";
 import MyAccount from "./pages/dummyPages/myAccount";
@@ -86,6 +88,15 @@ function App() {
                 <Route
                     path="/dummyPages/sampleProduct" //Path for it to be added too
                     element={<DefaultPageFramework component={<SampleProduct />} />} />
+               <Route
+                    path="/product/:productId"
+                    element={<DefaultPageFramework component={<Product />} />} />
+               <Route
+                    path="/product/"
+                    element={<DefaultPageFramework component={<Product />} />} />
+               <Route 
+                    exact path="/catalog"
+                    element={<BuyerPageFramework component={<Catalog/>} />} />
                 <Route exact path="/login" element={<Template children={<LoginScreenBase children={<LoginForm/>}/>}/>}/>        
                 <Route exact path="/SignUp" element={<Template children={<LoginScreenBase children={<CreateAccountForm/>}/>}/>}/>
                 <Route exact path="/SignUp/SellerSignUp" element={<Template children={<LoginScreenBase children={<CreateSellerForm/>} />}/>}/>
